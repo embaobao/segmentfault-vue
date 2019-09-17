@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="(i,index) in list" :key="index" class="answer-box">
+    <div v-for="i in list" :key="i.url" class="answer-box">
       <section  class="box"  >
         <div class="rank">
           <div class="votes hidden-xs">
@@ -30,7 +30,7 @@
           </h2>
 
           <ul class="taglist--inline ib">
-            <li v-for="tag in i.tags" class="tagPopup">
+            <li v-for="tag in i.tags" :key="tag.id" class="tagPopup">
               <a class="tag" :href="'https://segmentfault.com/'+tag.link">
               <template v-if="tag.img?true:false">
                 <img :src="tag.img">

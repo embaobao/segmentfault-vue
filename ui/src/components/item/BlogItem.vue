@@ -1,15 +1,17 @@
 <template>
   <div>
-    <section class="blog-item">
+    <section v-for="i in list" :key="i.url" class="blog-item">
       <div class="blog-rank">
         <div class="item-zan btn">
           <span class="zan-icon"></span>
-          <span class="zan-number">5</span>
+          <span class="zan-number">
+             {{i.votes}}
+          </span>
         </div>
       </div>
       <div class="summary">
         <h2 class="title blog-type-common  blog-type-1">
-          <a href="/a/1190000020393391">代码整洁 vs 代码肮脏</a>
+          <a href="/a/1190000020393391"> {{i.title}}</a>
         </h2>
         <ul class="author ">
           <li>
@@ -17,19 +19,19 @@
               <img
                 class="avatar-24 mr10 hidden-xs"
                 src="https://avatar-static.segmentfault.com/365/753/3657530265-5c9c754d3285d_small"
-                alt="泥瓦匠"
+                :alt="i.author"
               />
             </a>
             <span>
-              <a href="/u/niwajiang_5c99fa77b0858">泥瓦匠</a>
-              发布于
-              <a href="/u/niwajiang_5c99fa77b0858/articles/">self.文章</a>
+              <a :href="'https://segmentfault.com/'+i.columnUrl">{{i.author}}</a>
+              发布于 
+              <a href="/u/niwajiang_5c99fa77b0858/articles/">{{i.column}}</a>
             </span>
           </li>
-          <li class="bookmark" title="1 收藏" data-type="article" data-id="1190000020393391">
-            <span style="vertical-align:middle;">
-              <small class="glyphicon glyphicon-bookmark mr5"></small>
-              <span class="blog--bookmark__text">1 收藏</span>
+          <li class="bookmark" :title="i.bookmark+'收藏'">
+            <span>
+              <small><i class="fa fa-bookmark"></i></small>
+              <span>{{i.bookmark}}  收藏</span>
             </span>
           </li>
         </ul>
@@ -41,6 +43,8 @@
   </div>
 </template>
 <script>
+
+
 export default {
   props: ["list"]
 };
@@ -110,19 +114,24 @@ section, summary
   background-color: rgba(242,174,67,0.25);
   color: #F2AE43;
 
+a,a:hover, a:active, a:focus
+  outline: 0;
+
 
 
 .blog-item
   margin: 0;
   border-bottom: .01rem solid #eee;
   padding: .12rem 0;
+  .btn
+    padding: 0
   .blog-rank
     float: left;
     border-right: none;
     padding-right: 0;
     margin-right: 0;
     text-align: center;
-    line-height: 1.2;
+    line-height: .2rem;
     color: #666;
     font-size: .16rem
     .item-zan
@@ -143,8 +152,8 @@ section, summary
         -webkit-background-size: auto .6rem;
         background-size: auto .56rem;
       .zan-number
-        font-size: .16rem;
-        line-height: 1.6;
+        font-size:.16rem;
+        line-height:.26rem;
         font-weight: 500;
 
 
@@ -191,6 +200,34 @@ section, summary
         font-weight: normal;
         &:visited
           font-weight: 400;
+    .author
+      margin-bottom: 0;
+      margin-top: 10px;
+      color: #999;
+      font-size: 13px;
+      margin-left: -5px;
+      padding-left: 0;
+      list-style: none;
+      small
+        color: #999;
+        margin-right :.05rem;
+        margin-top :.01rem;
+      a
+        color: #009a61;
+      &>li
+        display: inline-block;
+        padding-left: 5px;
+        padding-right: 5px;
+        &>span 
+          vertical-align: middle;
+    .bookmark 
+      cursor: pointer;
+
+
+
+
+
+
 
 
 </style>

@@ -2,7 +2,7 @@
 <div>
 
     
-    <div v-for="item in dataList" class="new-item">
+    <div v-for="item in dataList" :key="item.id" class="new-item">
         <div class="news-labels">
             来自{{item.from.type }} 
             <a :href="'https://segmentfault.com/'+item.from.url" class="news-label">{{item.from.title}}</a>

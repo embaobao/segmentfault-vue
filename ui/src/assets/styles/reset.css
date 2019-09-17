@@ -208,3 +208,7 @@ a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   vertical-align: middle; }
+
+  body{
+    font-family: PingFangSC-Regular, "Hiragino Sans GB", sans-serif;
+  }

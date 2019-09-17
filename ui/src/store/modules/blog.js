@@ -12,8 +12,8 @@ let store = {
     getters: {},
     mutations: {
         setBlogList(state, list) {
-            console.log(list)
-            state.requstionList = list
+            console.log(list);
+            state.blogList = list
         }
     },
     actions: {
@@ -21,7 +21,6 @@ let store = {
             commit
         }) {
             let res = axios.get('http://localhost:8080/api/blogs').then(res => {
-            
                 commit('setBlogList',parser(res.data))
             }, err => {
 
@@ -74,6 +73,5 @@ function parser(body) {
     } catch (error) {
         console.log('数据解析失败' + error);
     }
-
     return requstionList
 }

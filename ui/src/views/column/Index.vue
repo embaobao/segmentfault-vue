@@ -3,7 +3,7 @@
         <container>
             <tabs>
             </tabs>
-            <blog-item></blog-item>
+            <blog-item :list="list"></blog-item>
         </container>
     </div>
 </template>
@@ -14,25 +14,31 @@
     import BlogItem from 'itemComponents/BlogItem'
 
 
+
     import {
         mapActions,
         mapState
     } from "vuex";
 
     export default {
+
+
         components: {
             Container,
             Tabs,
             BlogItem
         },
+
         computed: {
             ...mapState({
                 list: state => state.blog.blogList
             })
         },
+
         async mounted() {
-            // await this.LoadBlogList()
+            await this.LoadBlogList()
         },
+
         methods: {
             ...mapActions(["LoadBlogList"])
         }
